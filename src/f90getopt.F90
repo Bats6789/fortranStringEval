@@ -46,7 +46,7 @@ module f90getopt
 ! ------------------ Implicit -----------------------------------------------------------------------------------------------------
    IMPLICIT NONE
 ! ------------------ Local declarations -------------------------------------------------------------------------------------------
-   PUBLIC  :: getopt, option_s, optarg, isnum
+   PUBLIC  :: getopt, option_s, optarg, optind, isnum
    PRIVATE ! all other are private (hidden)
 ! ------------------ Constant declarations ----------------------------------------------------------------------------------------
 

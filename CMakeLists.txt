@@ -5,4 +5,4 @@ project(stringEval VERSION 0.1
 		LANGUAGES Fortran)
 enable_language(Fortran)
 
-add_executable(eval src/main.f90 src/f90getopt.F90)
+add_executable(eval src/main.f90 src/eval.f90 src/f90getopt.F90)
