@@ -6,7 +6,7 @@ program main
     character(len=:), allocatable :: string
     type(option_s) :: opts(2)
     integer :: arg_len
-    type(tokens_t), allocatable :: tokens(:)
+    type(token_t), allocatable :: tokens(:)
     
     opts(1) = option_s('version', .false., 'v')
     opts(2) = option_s('help', .false., 'h')
