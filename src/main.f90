@@ -5,8 +5,11 @@ program main
     character(len=*), parameter :: VERSION = '0.1'
     character(len=:), allocatable :: string
     type(option_s) :: opts(2)
-    integer :: arg_len
+    type(ast_t) :: ast
     type(token_t), allocatable :: tokens(:)
+    integer :: arg_len
+    integer :: tokens_len
+    integer :: status
     
     opts(1) = option_s('version', .false., 'v')
     opts(2) = option_s('help', .false., 'h')
@@ -36,10 +39,18 @@ program main
     allocate(tokens(arg_len))
     call get_command_argument(optind, string)
 
-    print '(A)', string
-    tokens = tokenizer(arg_len, string)
+    ! print '(A)', string
+    tokens = tokenizer(arg_len, string=string, tokens_len=tokens_len, status=status)
 
-    call print_tokens(tokens)
+    if (status /= 0) then
+        print *, 'ERROR: Something went wrong'
+        stop
+    end if
+
+    ! call print_tokens(tokens)
+
+    ! print *, ' '
+    ast = tokens_to_AST(tokens, tokens_len)
 
 contains
     subroutine print_help()
